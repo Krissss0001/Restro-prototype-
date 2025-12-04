@@ -34,12 +34,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Handle contact form submission
+// Handle contact form submission - SEND TO WHATSAPP
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('Thank you for your message! We will contact you soon.');
+    
+    // Get form values
+    const name = contactForm.querySelector('input[type="text"]').value;
+    const email = contactForm.querySelector('input[type="email"]').value;
+    const phone = contactForm.querySelector('input[type="tel"]').value;
+    const date = contactForm.querySelector('input[type="date"]').value;
+    const message = contactForm.querySelector('textarea').value;
+    
+    // Validate form
+    if (!name || !email || !phone || !date) {
+        alert('Please fill in all required fields!');
+        return;
+    }
+    
+    // Create WhatsApp message
+    const whatsappMessage = `🍽️ *New Restaurant Booking Request*
+
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📱 *Phone:* ${phone}
+📅 *Reservation Date:* ${date}
+💬 *Special Requests:* ${message || 'None'}
+
+---
+_Sent from Richard Dine Website_`;
+    
+    // Your WhatsApp number (Indian format: 919031287182)
+    const whatsappNumber = '919031287182';
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappURL, '_blank');
+    
+    // Show success message
+    alert('✅ Redirecting to WhatsApp! Please send the message to confirm your booking.');
+    
+    // Reset form
     contactForm.reset();
 });
 
@@ -60,7 +98,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Add animation on scroll
+// Add animation on scroll for menu items
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -75,10 +113,123 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe menu items
+// Observe menu items for animation
 document.querySelectorAll('.menu-item').forEach(item => {
     item.style.opacity = '0';
     item.style.transform = 'translateY(20px)';
-    item.style.transition = 'opacity 0.5s, transform 0.5s';
+    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(item);
 });
+
+// Add fade-in animation for about section
+const aboutSection = document.querySelector('.about');
+if (aboutSection) {
+    observer.observe(aboutSection);
+}
+
+// Add current year to footer
+const updateFooterYear = () => {
+    const footer = document.querySelector('footer p');
+    if (footer) {
+        footer.textContent = `© ${new Date().getFullYear()} Richard Dine. All rights reserved.`;
+    }
+};
+
+// Run on page load
+updateFooterYear();
+
+// Prevent form submission on enter key in input fields (except textarea)
+document.querySelectorAll('.contact-form input').forEach(input => {
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+        }
+    });
+});
+
+// Add floating animation to buttons
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+    });
+    
+    btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+// Mobile menu animation
+hamburger.addEventListener('click', function() {
+    const spans = this.querySelectorAll('span');
+    
+    if (navMenu.classList.contains('active')) {
+        // Animate to X
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+    } else {
+        // Animate back to hamburger
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// Scroll to top button (optional - you can add this)
+let scrollTopBtn = document.createElement('button');
+scrollTopBtn.innerHTML = '↑';
+scrollTopBtn.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #d4af37;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+`;
+
+document.body.appendChild(scrollTopBtn);
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollTopBtn.style.opacity = '1';
+    } else {
+        scrollTopBtn.style.opacity = '0';
+    }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+scrollTopBtn.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.1)';
+});
+
+scrollTopBtn.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+});
+
+// Console message (optional - fun easter egg)
+console.log('%c🍽️ Richard Dine - Fine Dining Experience', 'color: #d4af37; font-size: 20px; font-weight: bold;');
+console.log('%cWebsite by Your Name', 'color: #666; font-size: 12px;');
