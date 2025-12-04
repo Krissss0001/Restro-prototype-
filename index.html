@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richard Dine - Fine Dining Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Richard Dine</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Richard Dine</h1>
+            <p>Experience world-class dining with handcrafted meals, premium ingredients, and exceptional service in an elegant atmosphere.</p>
+            <a href="#menu" class="btn">View Menu</a>
+            <a href="#contact" class="btn">Reserve Table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to Richard Dine, where culinary excellence meets timeless elegance. Since our establishment, we have been dedicated to providing an unforgettable dining experience.</p>
+                <p>Our award-winning chefs use only the finest seasonal ingredients to create innovative dishes that honor traditional techniques while embracing modern creativity.</p>
+                <p>Whether you're celebrating a special occasion or enjoying an intimate dinner, Richard Dine offers the perfect setting for memorable moments.</p>
+            </div>
+            <div class="about-image">
+                <img src="images/restaurant.jpg" alt="Restaurant interior" onerror="this.style.display='none'; this.parentElement.innerHTML='[Add your restaurant image]'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>Grilled Salmon</h3>
+                <p>Fresh Atlantic salmon with lemon butter sauce, seasonal vegetables, and herb-roasted potatoes.</p>
+                <span class="price">$32</span>
+            </div>
+            <div class="menu-item">
+                <h3>Filet Mignon</h3>
+                <p>8oz premium beef tenderloin with truffle mashed potatoes, asparagus, and red wine reduction.</p>
+                <span class="price">$45</span>
+            </div>
+            <div class="menu-item">
+                <h3>Lobster Risotto</h3>
+                <p>Creamy arborio rice with fresh lobster, parmesan, and white wine, finished with herbs.</p>
+                <span class="price">$38</span>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Piccata</h3>
+                <p>Pan-seared chicken breast with lemon caper sauce, angel hair pasta, and sautéed spinach.</p>
+                <span class="price">$28</span>
+            </div>
+            <div class="menu-item">
+                <h3>Vegetarian Pasta</h3>
+                <p>House-made pasta with roasted vegetables, fresh basil, garlic, and extra virgin olive oil.</p>
+                <span class="price">$24</span>
+            </div>
+            <div class="menu-item">
+                <h3>Chocolate Lava Cake</h3>
+                <p>Warm chocolate cake with molten center, vanilla ice cream, and fresh berries.</p>
+                <span class="price">$12</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p><strong>Address:</strong><br>123 Fine Dining Street<br>New York, NY 10001</p>
+                <p><strong>Phone:</strong><br>(555) 123-4567</p>
+                <p><strong>Email:</strong><br>info@richarddine.com</p>
+                <p><strong>Hours:</strong><br>
+                Monday - Thursday: 5:00 PM - 10:00 PM<br>
+                Friday - Saturday: 5:00 PM - 11:00 PM<br>
+                Sunday: 4:00 PM - 9:00 PM</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <input type="date" placeholder="Reservation Date" required>
+                <textarea placeholder="Special Requests or Questions"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Richard Dine. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+      </html>
